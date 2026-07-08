@@ -702,7 +702,7 @@
       <header class="topbar">
         <div class="nav-left"></div>
         <strong class="nav-title">保養管理</strong>
-        <div class="nav-right"><button class="link-btn" type="button" id="menuBtn">⋯</button></div>
+        <div class="nav-right"></div>
       </header>
 
       <h1 class="home-title">我的車輛</h1>
@@ -719,7 +719,7 @@
           </button>
         </div>
         <strong class="nav-title" id="vehicleTitle">MMBCU</strong>
-        <div class="nav-right"><button class="link-btn" type="button" id="listMenuBtn">⋯</button></div>
+        <div class="nav-right"></div>
       </header>
 
       <div class="summary" aria-label="統計">
@@ -830,20 +830,6 @@
   </div>
 
 
-  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="資料與備份">
-    <div class="sheet-panel">
-      <div class="sheet-title" id="cloudStatus">Realtime Database：M/4XK7A8</div>
-      <button class="sheet-btn" type="button" id="backupBtn">下載 JSON 備份</button>
-      <button class="sheet-btn" type="button" id="importBtn">匯入 JSON 備份</button>
-      <button class="sheet-btn" type="button" id="firebaseBackupBtn">備份到 Firebase RTDB</button>
-      <button class="sheet-btn" type="button" id="firebaseRestoreBtn">從 Firebase RTDB 還原</button>
-      <button class="sheet-btn" type="button" id="firebaseSetupBtn">更改備份代碼</button>
-      <button class="sheet-btn" type="button" id="showAllBtn">收合 / 展開年份</button>
-      <button class="sheet-btn danger" type="button" id="clearBtn">清空本機資料</button>
-      <button class="sheet-btn" type="button" id="closeSheetBtn">取消</button>
-    </div>
-  </div>
-
   <input class="file-input" id="importFile" type="file" accept="application/json,.json">
 
   <script>
@@ -851,7 +837,7 @@
     const VEHICLES_KEY = "motorcycle-maintenance-vehicles-v1";
     const FIREBASE_KEY = "motorcycle-maintenance-firebase-v1";
     const FIREBASE_SDK_VERSION = "10.12.5";
-    const DEFAULT_BACKUP_ID = "M/4XK7A8";
+    const DEFAULT_BACKUP_ID = "main";
     const FIREBASE_CONFIG = {
       apiKey: "AIzaSyAvo2-aTHpDdnzNvD4aOp5o16KBQaR9OlU",
       authDomain: "yikai-shared.firebaseapp.com",
@@ -943,6 +929,8 @@
     let searchText = "";
     let collapsedYears = new Set();
     let firebaseApp = null;
+    let cloudSaveTimer = null;
+    let cloudSyncLocked = false;
 
     function today() {
       return new Date().toISOString().slice(0, 10);
@@ -959,6 +947,7 @@
 
     function saveRecords() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+      scheduleCloudSave();
     }
 
     function loadVehicles() {
@@ -972,6 +961,7 @@
 
     function saveVehicles() {
       localStorage.setItem(VEHICLES_KEY, JSON.stringify(vehicles));
+      scheduleCloudSave();
     }
 
     function loadFirebaseSettings() {
@@ -1409,8 +1399,7 @@
     }
 
     function currentBackupId() {
-      const settings = loadFirebaseSettings();
-      return settings?.backupId || DEFAULT_BACKUP_ID;
+      return DEFAULT_BACKUP_ID;
     }
 
     function firebasePath() {
@@ -1457,7 +1446,16 @@
       return firebase.database().ref(firebasePath());
     }
 
-    async function backupToFirebase() {
+    function scheduleCloudSave() {
+      if (cloudSyncLocked) return;
+      clearTimeout(cloudSaveTimer);
+      cloudSaveTimer = setTimeout(() => {
+        saveToFirebaseSilently();
+      }, 650);
+    }
+
+    async function saveToFirebaseSilently() {
+      if (cloudSyncLocked) return;
       try {
         const ref = await ensureFirebase();
         await ref.set({
@@ -1465,8 +1463,16 @@
           vehicles,
           updatedAt: new Date().toISOString(),
           count: records.length,
-          source: "github-pages-rtdb"
+          source: "github-pages-rtdb-autosave"
         });
+      } catch (error) {
+        console.warn("Firebase 自動儲存失敗", error);
+      }
+    }
+
+    async function backupToFirebase() {
+      try {
+        await saveToFirebaseSilently();
         closeSheet();
         alert("已備份到 Firebase Realtime Database。");
       } catch (error) {
@@ -1484,6 +1490,7 @@
           return;
         }
         const data = snap.val();
+        cloudSyncLocked = true;
         if (!Array.isArray(data.records)) {
           alert("Firebase 備份格式不正確。");
           return;
@@ -1497,18 +1504,42 @@
         renderList();
         closeSheet();
         alert("已從 Firebase Realtime Database 還原。");
+        cloudSyncLocked = false;
       } catch (error) {
+        cloudSyncLocked = false;
         alert(`Firebase 還原失敗：${error.message || "請檢查網路與規則"}`);
       }
     }
 
+    async function autoLoadFromFirebase() {
+      if (records.length || vehicles.length) return;
+      try {
+        cloudSyncLocked = true;
+        const ref = await ensureFirebase();
+        const snap = await ref.get();
+        if (!snap.exists()) return;
+        const data = snap.val();
+        if (!Array.isArray(data.records)) return;
+        records = data.records.filter(item => item && item.id);
+        vehicles = Array.isArray(data.vehicles) ? data.vehicles.filter(item => item && item.id) : [];
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+        localStorage.setItem(VEHICLES_KEY, JSON.stringify(vehicles));
+        ensureVehiclesFromRecords();
+        renderVehicles();
+        renderList();
+      } catch (error) {
+        console.warn("Firebase 自動讀取失敗", error);
+      } finally {
+        cloudSyncLocked = false;
+      }
+    }
+
     function openSheet() {
-      els.cloudStatus.textContent = `Realtime Database：${firebasePath()}`;
-      els.sheet?.classList.add("open");
+      return;
     }
 
     function closeSheet() {
-      els.sheet?.classList.remove("open");
+      return;
     }
 
     function toggleAllYears() {
@@ -1651,7 +1682,9 @@
     els.clearBtn?.addEventListener("click", () => {
       if (!confirm("確定清空全部紀錄？建議先按「備份」。")) return;
       records = [];
+      vehicles = [];
       saveRecords();
+      saveVehicles();
       closeSheet();
       currentVehicle = "";
       showScreen("vehicle");
@@ -1660,9 +1693,9 @@
     });
 
     renderCategoryOptions();
-    seedIfEmpty();
     ensureVehiclesFromRecords();
     renderVehicles();
+    autoLoadFromFirebase();
   </script>
 </body>
 </html>
