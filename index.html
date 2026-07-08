@@ -5,52 +5,1664 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="機車保養">
-  <meta name="theme-color" content="#f2f2f7">
+  <meta name="theme-color" content="#ffffff">
   <title>機車保養紀錄</title>
   <style>
-    :root{--bg:#f2f2f7;--card:#fff;--text:#111318;--muted:#6e6e73;--blue:#0a84ff;--danger:#ff3b30;--dark:#1f2937;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Segoe UI",sans-serif;color-scheme:light}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-weight:650;-webkit-font-smoothing:antialiased}button,input,textarea,select{font:inherit}button{border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}.app{max-width:560px;margin:0 auto;min-height:100dvh;padding-bottom:calc(92px + env(safe-area-inset-bottom))}.topbar{position:sticky;top:0;z-index:5;height:calc(56px + env(safe-area-inset-top));padding:env(safe-area-inset-top) 16px 0;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;background:rgba(242,242,247,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(216,216,222,.8)}.title{font-size:17px;font-weight:800}.link{color:var(--blue);font-size:17px;min-height:44px}.right{justify-self:end}.left{justify-self:start}.screen{display:none}.screen.active{display:block}.home-title{font-size:34px;line-height:1.1;margin:0;padding:24px 20px 12px}.section{padding:0 20px 20px}.section-head{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:13px;font-weight:800;padding:10px 2px}.pill{min-width:44px;height:34px;border-radius:18px;background:var(--dark);color:#fff;font-size:22px;display:grid;place-items:center}.vehicle{width:100%;min-height:86px;margin:0 0 10px;padding:14px 16px;border-radius:14px;background:var(--card);display:grid;grid-template-columns:56px minmax(0,1fr) auto;align-items:center;gap:14px;text-align:left;box-shadow:0 1px 0 rgba(0,0,0,.04)}.icon{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;background:#e7f1ff;color:var(--blue);font-size:26px}.name{display:block;font-size:21px;font-weight:800;overflow-wrap:anywhere}.sub{display:block;margin-top:6px;color:var(--muted);font-size:14px;font-weight:600}.arrow{color:var(--blue);font-size:28px}.empty{padding:60px 28px;text-align:center;color:var(--muted);font-size:17px;line-height:1.6}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:14px 16px 10px}.summary div{background:#fff;border-radius:14px;padding:12px 10px;min-height:70px;color:var(--muted);font-size:11px;font-weight:800}.summary strong{display:block;margin-top:8px;color:var(--text);font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.search{padding:8px 16px 12px}.search input,.input,.textarea,.select{width:100%;border:0;outline:none;border-radius:14px;background:#fff;color:var(--text);min-height:56px;padding:15px 16px;font-size:18px;font-weight:650}.search input{background:#e7eaf0;min-height:46px;font-size:15px}.records{padding:0 20px 20px}.year{width:100%;display:flex;justify-content:space-between;align-items:center;padding:18px 2px 10px;font-size:24px;font-weight:900;text-align:left}.year span{font-size:15px;color:var(--muted)}.record{width:100%;min-height:96px;border-radius:14px;background:#fff;margin-bottom:10px;padding:16px;display:grid;grid-template-columns:52px minmax(0,1fr) 100px;gap:12px;align-items:center;text-align:left}.record-title{font-size:18px;font-weight:850}.note{display:block;margin-top:8px;color:var(--muted);font-size:13px;line-height:1.35}.meta{text-align:right;white-space:nowrap;color:#484a51;font-size:14px}.money{display:block;color:#0a6fd6;font-size:18px;font-weight:900;margin:2px 0}.fab,.save{position:fixed;right:max(20px,calc((100vw - 560px)/2 + 20px));bottom:calc(24px + env(safe-area-inset-bottom));z-index:10;border-radius:999px;background:#1c1c1e;color:#fff;box-shadow:0 8px 22px rgba(31,41,55,.26)}.fab{width:58px;height:58px;font-size:34px}.save{min-width:84px;height:50px;font-size:17px;font-weight:800}.form{padding:20px}.field{display:block;margin-bottom:18px}.label{display:block;margin:0 0 8px 2px;color:#5a5c63;font-size:15px;font-weight:700}.textarea{min-height:116px;resize:vertical}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.danger{color:var(--danger)}.sheet,.modal{position:fixed;inset:0;z-index:30;display:none;align-items:flex-end;background:rgba(0,0,0,.25);padding:18px}.sheet.open,.modal.open{display:flex}.panel{width:100%;max-width:560px;margin:0 auto;border-radius:18px;background:rgba(255,255,255,.96);padding:16px 18px calc(18px + env(safe-area-inset-bottom));box-shadow:0 18px 42px rgba(30,35,45,.2);backdrop-filter:blur(20px)}.sheet-title{text-align:center;color:var(--muted);font-size:14px;margin:6px 0 12px}.sheet-btn{width:100%;min-height:54px;margin-top:8px;border-radius:10px;background:#f6f7fb;color:var(--blue);font-size:18px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.modal-btn{min-height:46px;border-radius:12px;background:#eef0f4}.primary{background:#1c1c1e;color:#fff}.hidden{display:none!important}.file{display:none}@media(max-width:380px){.row{grid-template-columns:1fr}.record{grid-template-columns:48px minmax(0,1fr) 88px;padding:14px}.home-title{font-size:31px}.summary strong{font-size:14px}}
+    :root {
+      color-scheme: light;
+      --blue: #0a84ff;
+      --blue-dark: #0a6fd6;
+      --text: #1c1c1e;
+      --muted: #6e6e73;
+      --line: #d9d9df;
+      --bg: #f2f2f7;
+      --card: #ffffff;
+      --danger: #ff3b30;
+      --green: #34c759;
+      --orange: #ff9500;
+      --soft-blue: #eaf3ff;
+      --soft-green: #e8f7ef;
+      --shadow: 0 8px 20px rgba(30, 35, 45, .08);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Noto Sans TC", "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    body {
+      max-width: 560px;
+      margin: 0 auto;
+      font-weight: 600;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      background: none;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .app {
+      min-height: 100vh;
+      min-height: 100dvh;
+      background: var(--bg);
+      padding-bottom: calc(104px + env(safe-area-inset-bottom));
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      height: calc(58px + env(safe-area-inset-top));
+      padding: env(safe-area-inset-top) 16px 0;
+      background: rgba(242,242,247,.92);
+      border-bottom: 1px solid rgba(216,216,222,.75);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-left {
+      justify-self: start;
+      display: flex;
+      align-items: center;
+      min-width: 88px;
+    }
+    .nav-right { justify-self: end; }
+    .nav-title {
+      justify-self: center;
+      font-size: 17px;
+      color: #1f2329;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .link-btn {
+      color: var(--blue);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      min-height: 44px;
+      padding: 0 2px;
+      white-space: nowrap;
+    }
+
+    .back-link {
+      padding-left: 0;
+      padding-right: 12px;
+      letter-spacing: 0;
+    }
+
+    .ios-chevron {
+      width: 12px;
+      height: 12px;
+      margin-right: 3px;
+      border-left: 2.4px solid currentColor;
+      border-bottom: 2.4px solid currentColor;
+      transform: rotate(45deg);
+      border-radius: 1px;
+    }
+
+    .screen { display: none; }
+    .screen.active { display: block; }
+
+    .vehicle-list {
+      padding: 20px 20px 0;
+      background: var(--bg);
+    }
+
+    .vehicle-section {
+      margin-bottom: 22px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2px 2px 8px;
+      color: #6e737d;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .section-add {
+      min-width: 44px;
+      height: 34px;
+      border-radius: 17px;
+      display: grid;
+      place-items: center;
+      background: #1f2937;
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1;
+      box-shadow: 0 4px 12px rgba(31,41,55,.18);
+    }
+
+    .home-title {
+      padding: 22px 20px 8px;
+      background: var(--bg);
+      font-size: 34px;
+      line-height: 1.12;
+      letter-spacing: 0;
+      color: #111318;
+      font-weight: 800;
+    }
+
+    .vehicle-card {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 14px;
+      min-height: 86px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 1px 0 rgba(0,0,0,.04);
+      text-align: left;
+      color: var(--text);
+    }
+
+    .vehicle-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--soft-blue);
+      font-size: 28px;
+      color: #0a84ff;
+    }
+
+    .vehicle-name {
+      display: block;
+      font-size: 21px;
+      line-height: 1.2;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .vehicle-sub {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .empty-small {
+      padding: 12px 4px 4px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .vehicle-arrow {
+      color: var(--blue);
+      font-size: 28px;
+    }
+
+    .search-wrap {
+      padding: 12px 16px 8px;
+      background: var(--bg);
+    }
+
+    .search-input {
+      width: 100%;
+      min-height: 46px;
+      border: 0;
+      border-radius: 13px;
+      background: #e7eaf0;
+      color: var(--text);
+      padding: 10px 16px;
+      outline: none;
+      font-size: 15px;
+      font-weight: 500;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+    }
+
+    .search-input::placeholder {
+      color: #7d828c;
+    }
+
+    .year-title {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 2px 10px;
+      font-size: 24px;
+      color: #111318;
+      background: var(--bg);
+      text-align: left;
+      font-weight: 800;
+    }
+
+    .year-title span {
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .year-caret {
+      color: var(--blue);
+      font-size: 20px;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      padding: 14px 16px 10px;
+      background: var(--bg);
+    }
+
+    .summary div {
+      min-height: 70px;
+      padding: 12px 10px 11px;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 1px 0 rgba(0,0,0,.04);
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .summary strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 17px;
+      color: var(--text);
+      font-weight: 800;
+      line-height: 1.15;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .record-list {
+      padding: 0 20px 10px;
+      background: var(--bg);
+    }
+
+    .record {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 58px minmax(0, 1fr) 100px;
+      gap: 12px;
+      align-items: center;
+      min-height: 96px;
+      padding: 16px;
+      margin-bottom: 10px;
+      border-radius: 12px;
+      background: #fff;
+      text-align: left;
+      color: var(--text);
+    }
+
+    .record-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 27px;
+      background: var(--soft-blue);
+      overflow: hidden;
+      color: #0a84ff;
+    }
+
+    .icon-svg {
+      width: 28px;
+      height: 28px;
+      display: block;
+      color: currentColor;
+    }
+
+    .record-name {
+      font-size: 18px;
+      line-height: 1.18;
+      color: #1f2329;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .record-note {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+      line-height: 1.3;
+      overflow-wrap: anywhere;
+    }
+
+    .record-meta {
+      text-align: right;
+      font-size: 15px;
+      line-height: 1.4;
+      color: #484a51;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .record-meta .money {
+      display: block;
+      color: var(--blue-dark);
+      font-size: 18px;
+      margin: 2px 0;
+      font-weight: 750;
+    }
+
+    .empty {
+      padding: 88px 28px;
+      text-align: center;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .fab {
+      position: fixed;
+      right: max(20px, calc((100vw - 560px) / 2 + 20px));
+      bottom: calc(24px + env(safe-area-inset-bottom));
+      z-index: 20;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #1f2937;
+      color: #ffffff;
+      font-size: 34px;
+      font-weight: 400;
+      line-height: 1;
+      border: 1px solid rgba(255,255,255,.22);
+      box-shadow: 0 8px 22px rgba(31,41,55,.26);
+      backdrop-filter: blur(18px);
+    }
+
+    .form {
+      padding: 20px 20px 0;
+      background: var(--bg);
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    .label {
+      display: block;
+      margin: 0 0 8px 2px;
+      color: #5a5c63;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .input, .select, .textarea {
+      width: 100%;
+      min-height: 56px;
+      border: 0;
+      border-radius: 12px;
+      background: #fff;
+      color: #050507;
+      padding: 15px 16px;
+      outline: none;
+      font-size: 18px;
+      font-weight: 600;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.02);
+    }
+
+    .textarea {
+      min-height: 116px;
+      resize: vertical;
+      line-height: 1.45;
+    }
+
+    .select-wrap {
+      display: grid;
+      grid-template-columns: 1fr;
+      position: relative;
+    }
+
+    .select {
+      appearance: none;
+      padding-right: 56px;
+    }
+
+    .select-wrap::after {
+      content: "⌄";
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-57%);
+      color: var(--blue);
+      font-size: 28px;
+      pointer-events: none;
+    }
+
+    .preview-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 27px;
+      background: var(--soft-blue);
+      color: #0a84ff;
+    }
+
+    .preview-icon .icon-svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .category-row {
+      display: grid;
+      grid-template-columns: 50px minmax(0, 1fr);
+      align-items: center;
+      gap: 12px;
+      min-height: 64px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .category-row .input,
+    .category-row .select {
+      min-height: 48px;
+      padding: 10px 34px 10px 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .category-row .select-wrap::after {
+      content: none;
+    }
+
+    .category-picker-btn {
+      width: 100%;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 0 4px 0 0;
+      color: #050507;
+      text-align: left;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .category-picker-btn span:first-child {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .category-picker-btn span:last-child {
+      color: var(--blue);
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .option-list {
+      display: grid;
+      gap: 8px;
+      max-height: min(58vh, 480px);
+      overflow: auto;
+    }
+
+    .option-btn {
+      width: 100%;
+      min-height: 54px;
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr) 24px;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      background: #f5f6f9;
+      color: var(--text);
+      text-align: left;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .option-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+    }
+
+    .option-check {
+      color: var(--blue);
+      text-align: right;
+      font-size: 18px;
+    }
+
+    .date-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .save-fab {
+      position: fixed;
+      right: max(20px, calc((100vw - 560px) / 2 + 20px));
+      bottom: calc(24px + env(safe-area-inset-bottom));
+      z-index: 20;
+      min-width: 84px;
+      height: 50px;
+      border-radius: 25px;
+      display: grid;
+      place-items: center;
+      background: #1c1c1e;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(30,35,45,.18);
+    }
+
+    .sheet {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: none;
+      background: rgba(0,0,0,.25);
+      align-items: flex-end;
+    }
+
+    .sheet.open { display: flex; }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: none;
+      align-items: flex-end;
+      background: rgba(0,0,0,.24);
+      padding: 18px;
+    }
+
+    .modal.open { display: flex; }
+
+    .modal-panel {
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto calc(env(safe-area-inset-bottom));
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.96);
+      box-shadow: 0 18px 42px rgba(30,35,45,.2);
+      backdrop-filter: blur(20px);
+    }
+
+    .modal-title {
+      margin-bottom: 14px;
+      color: var(--text);
+      font-size: 19px;
+      font-weight: 750;
+    }
+
+    .modal-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .modal-btn {
+      min-height: 46px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      background: #eef0f4;
+      color: var(--text);
+    }
+
+    .modal-btn.primary {
+      background: #1c1c1e;
+      color: #fff;
+    }
+
+    .sheet-panel {
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 16px 16px 0 0;
+      padding: 14px 18px calc(22px + env(safe-area-inset-bottom));
+    }
+
+    .sheet-title {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin: 6px 0 12px;
+    }
+
+    .sheet-btn {
+      width: 100%;
+      min-height: 54px;
+      border-radius: 8px;
+      color: var(--blue);
+      background: #f6f7fb;
+      font-size: 19px;
+      margin-top: 8px;
+    }
+
+    .danger { color: var(--danger); }
+    .hidden { display: none !important; }
+    .file-input { display: none; }
+
+    @media (max-width: 380px) {
+      .record {
+        grid-template-columns: 52px minmax(0, 1fr) 92px;
+        gap: 8px;
+        padding: 14px;
+      }
+
+      .record-name { font-size: 17px; }
+      .record-meta { font-size: 14px; }
+      .record-meta .money { font-size: 17px; }
+      .summary { gap: 7px; padding-left: 14px; padding-right: 14px; }
+      .summary div { padding-left: 8px; padding-right: 8px; }
+      .summary strong { font-size: 15px; }
+      .home-title { font-size: 31px; }
+      .date-row { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-<main class="app">
-  <section id="home" class="screen active"><header class="topbar"><div></div><strong class="title">保養管理</strong><div class="right"><button id="homeMenu" class="link">⋯</button></div></header><h1 class="home-title">我的車輛</h1><div class="section" id="vehicleList"></div><div class="empty hidden" id="vehicleEmpty">還沒有車輛。<br>按機車或汽車旁邊的 + 新增車型。</div></section>
-  <section id="list" class="screen"><header class="topbar"><button id="backHome" class="link left">‹ 返回</button><strong id="vehicleTitle" class="title"></strong><div class="right"><button id="listMenu" class="link">⋯</button></div></header><div class="summary"><div>今年花費<strong id="yearTotal">$0</strong></div><div>筆數<strong id="countTotal">0</strong></div><div>最新里程<strong id="latestMileage">0 公里</strong></div></div><div class="search"><input id="search" type="search" placeholder="搜尋保養項目、廠牌、備註"></div><div class="records" id="recordList"></div><div class="empty hidden" id="recordEmpty">還沒有保養紀錄。<br>按右下角 + 新增第一筆。</div><button id="addRecord" class="fab">+</button></section>
-  <section id="form" class="screen"><header class="topbar"><button id="backList" class="link left">‹ 返回</button><strong id="formTitle" class="title">新增紀錄</strong><button id="deleteRecord" class="link right danger hidden">刪除</button></header><form id="recordForm" class="form"><input id="id" type="hidden"><label class="field"><span class="label">金額</span><input id="amount" class="input" inputmode="numeric" placeholder="例如 1500" required></label><label class="field"><span class="label">車輛</span><input id="vehicle" class="input" placeholder="例如 MMBCU" required></label><label class="field"><span class="label">保養項目</span><select id="category" class="select"></select></label><label class="field hidden" id="customWrap"><span class="label">自訂項目</span><input id="customCategory" class="input" placeholder="例如 變速箱油"></label><label class="field"><span class="label">里程數</span><input id="mileage" class="input" inputmode="numeric" placeholder="例如 13700" required></label><div class="row"><label class="field"><span class="label">日期</span><input id="date" class="input" type="date" required></label><label class="field"><span class="label">廠牌</span><input id="brand" class="input" placeholder="例如 pakelo"></label></div><label class="field"><span class="label">備註</span><textarea id="note" class="textarea" placeholder="可填更換內容、油品、店家..."></textarea></label></form><button class="save" type="submit" form="recordForm">儲存</button></section>
-</main>
-<div id="vehicleModal" class="modal"><div class="panel"><div class="sheet-title" id="vehicleModalTitle">新增車型</div><input id="newVehicle" class="input" placeholder="例如 MMBCU"><div class="actions"><button id="cancelVehicle" class="modal-btn">取消</button><button id="saveVehicle" class="modal-btn primary">新增</button></div></div></div>
-<div id="sheet" class="sheet"><div class="panel"><div id="cloudStatus" class="sheet-title">Realtime Database：public/motorcycleMaintenance/my-motorcycle</div><button id="exportBtn" class="sheet-btn">下載 JSON 備份</button><button id="importBtn" class="sheet-btn">匯入 JSON 備份</button><button id="backupFirebase" class="sheet-btn">備份到 Firebase RTDB</button><button id="restoreFirebase" class="sheet-btn">從 Firebase RTDB 還原</button><button id="changeBackupId" class="sheet-btn">更改備份代碼</button><button id="clearAll" class="sheet-btn danger">清空本機資料</button><button id="closeSheet" class="sheet-btn">取消</button></div></div>
-<input id="importFile" class="file" type="file" accept="application/json,.json">
-<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
-<script>
-const firebaseConfig={apiKey:"AIzaSyAvo2-aTHpDdnzNvD4aOp5o16KBQaR9OlU",authDomain:"yikai-shared.firebaseapp.com",databaseURL:"https://yikai-shared-default-rtdb.asia-southeast1.firebasedatabase.app",projectId:"yikai-shared",storageBucket:"yikai-shared.firebasestorage.app",messagingSenderId:"798549808274",appId:"1:798549808274:web:ef37e35a097fd46405c24b"};
-firebase.initializeApp(firebaseConfig);
-const db=firebase.database();
-const K_RECORDS='motorcycle-maintenance-records-v1',K_VEHICLES='motorcycle-maintenance-vehicles-v1',K_BACKUP='motorcycle-maintenance-rtdb-backup-id-v1';
-const categories=[['engine-oil','機油','🛢️'],['gear-oil','齒輪油','🧴'],['coolant','水箱精','💧'],['tire','輪胎','⚫'],['battery','電瓶','🔋'],['brake','煞車','🛑'],['filter','空濾','🌬️'],['belt','皮帶','⛓️'],['transmission-oil','變速箱油','🧴'],['wiper','雨刷','🧰'],['ac-filter','冷氣濾網','🌬️'],['other','其他','🔧']].map(([id,name,icon])=>({id,name,icon}));
-const $=s=>document.querySelector(s), today=()=>new Date().toISOString().slice(0,10), money=v=>'$'+Number(v||0).toLocaleString('zh-TW'), num=v=>Number(v||0).toLocaleString('zh-TW'), clean=v=>String(v||'').replace(/[^\d]/g,''), esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
-let records=load(K_RECORDS,[]), vehicles=load(K_VEHICLES,[]), currentVehicle='', currentType='motorcycle', pendingType='motorcycle', search='', collapsed=new Set();
-function load(k,f){try{const v=JSON.parse(localStorage.getItem(k)||'null');return v??f}catch{return f}}function save(){localStorage.setItem(K_RECORDS,JSON.stringify(records));localStorage.setItem(K_VEHICLES,JSON.stringify(vehicles))}function backupId(){return localStorage.getItem(K_BACKUP)||'my-motorcycle'}function backupRef(){return db.ref('public/motorcycleMaintenance/'+backupId())}
-function show(id){['home','list','form'].forEach(x=>$('#'+x).classList.toggle('active',x===id));scrollTo(0,0)}
-function vehicleId(name,type){return type+':'+String(name).trim().toLowerCase()}function vLabel(t){return t==='car'?'汽車':'機車'}function vIcon(t){return t==='car'?'🚗':'🛵'}function cat(id){return categories.find(c=>c.id===id)||categories.at(-1)}function recordType(r){return r.vehicleType==='car'?'car':'motorcycle'}function vehicleRecords(name=currentVehicle,type=currentType){return records.filter(r=>r.vehicle===name&&recordType(r)===type)}
-function addVehicle(name,type){name=String(name||'').trim();if(!name)return null;const id=vehicleId(name,type);let v=vehicles.find(x=>x.id===id);if(v)return v;v={id,name,type,createdAt:today()};vehicles=[...vehicles,v];save();return v}
-function ensureVehicles(){let changed=false;records.forEach(r=>{if(!r.vehicle)return;const id=vehicleId(r.vehicle,recordType(r));if(!vehicles.some(v=>v.id===id)){vehicles.push({id,name:r.vehicle,type:recordType(r),createdAt:r.date||today()});changed=true}});if(changed)save()}
-function renderVehicles(){const sections=[['motorcycle','機車'],['car','汽車']];let total=0;$('#vehicleList').innerHTML=sections.map(([type,title])=>{const list=vehicles.filter(v=>v.type===type).sort((a,b)=>a.name.localeCompare(b.name,'zh-Hant'));total+=list.length;return `<div class="section-head"><span>${title}</span><button class="pill" data-add="${type}">+</button></div>${list.length?list.map(v=>vehicleCard(v)).join(''):`<div class="sub" style="padding:8px 2px 18px">尚無${title}車型</div>`}`}).join('');$('#vehicleEmpty').classList.toggle('hidden',total>0)}
-function vehicleCard(v){const rs=vehicleRecords(v.name,v.type), total=rs.reduce((s,r)=>s+Number(r.amount||0),0), latest=rs.reduce((m,r)=>Math.max(m,Number(r.mileage||0)),0);return `<button class="vehicle" data-open="${esc(v.name)}" data-type="${v.type}"><span class="icon">${vIcon(v.type)}</span><span><span class="name">${esc(v.name)}</span><span class="sub">${rs.length} 筆 · ${num(latest)} 公里 · ${money(total)}</span></span><span class="arrow">›</span></button>`}
-function openVehicle(name,type){currentVehicle=name;currentType=type;search='';collapsed=new Set();$('#vehicleTitle').textContent=name;$('#search').value='';show('list');renderList()}
-function renderList(){const rs=vehicleRecords().sort((a,b)=>String(b.date).localeCompare(String(a.date))||Number(b.mileage)-Number(a.mileage));const kw=search.trim().toLowerCase();const visible=rs.filter(r=>!kw||[cat(r.category).name,r.categoryName,r.vehicle,r.brand,r.note,r.amount,r.mileage,r.date].some(x=>String(x||'').toLowerCase().includes(kw)));const y=new Date().getFullYear();const yr=rs.filter(r=>new Date(r.date||today()).getFullYear()===y);$('#yearTotal').textContent=money(yr.reduce((s,r)=>s+Number(r.amount||0),0));$('#countTotal').textContent=String(rs.length);$('#latestMileage').textContent=num(rs.reduce((m,r)=>Math.max(m,Number(r.mileage||0)),0))+' 公里';$('#recordEmpty').classList.toggle('hidden',visible.length>0);const years=[...new Set(visible.map(r=>new Date(r.date||today()).getFullYear()))].sort((a,b)=>b-a);$('#recordList').innerHTML=years.map(year=>{const list=visible.filter(r=>new Date(r.date||today()).getFullYear()===year), col=collapsed.has(String(year));return `<button class="year" data-year="${year}">${year} 年<span>${list.length} 筆 ${col?'＋':'－'}</span></button>${col?'':list.map(recordCard).join('')}`}).join('')}
-function recordCard(r){const c=cat(r.category), name=r.category==='other'&&r.categoryName?r.categoryName:c.name, note=[r.brand,r.note].filter(Boolean).join(' · '), date=r.date?String(r.date).slice(5):'';return `<button class="record" data-id="${r.id}"><span class="icon">${c.icon}</span><span><span class="record-title">${esc(name)}</span>${note?`<span class="note">${esc(note)}</span>`:''}</span><span class="meta"><span>${date}</span><span class="money">${money(r.amount)}</span><span>${num(r.mileage)} 公里</span></span></button>`}
-function openForm(r){const edit=!!r;$('#formTitle').textContent=edit?'編輯紀錄':'新增紀錄';$('#deleteRecord').classList.toggle('hidden',!edit);$('#id').value=r?.id||'';$('#amount').value=r?.amount||'';$('#vehicle').value=r?.vehicle||currentVehicle||'';$('#category').value=r?.category||'engine-oil';$('#customCategory').value=r?.categoryName||'';$('#mileage').value=r?.mileage||'';$('#date').value=r?.date||today();$('#brand').value=r?.brand||'';$('#note').value=r?.note||'';updateCustom();show('form')}
-function updateCustom(){const on=$('#category').value==='other';$('#customWrap').classList.toggle('hidden',!on);$('#customCategory').required=on}function closeForm(){show('list');renderVehicles();renderList()}
-function submit(e){e.preventDefault();const id=$('#id').value||Date.now().toString(36)+Math.random().toString(36).slice(2,8);const category=$('#category').value;const next={id,amount:Number(clean($('#amount').value)),vehicle:$('#vehicle').value.trim(),vehicleType:currentType,category,categoryName:category==='other'?$('#customCategory').value.trim():cat(category).name,mileage:Number(clean($('#mileage').value)),date:$('#date').value||today(),brand:$('#brand').value.trim(),note:$('#note').value.trim()};if(!next.amount||!next.vehicle||!next.mileage){alert('請填金額、車輛與里程數。');return}records=records.some(r=>r.id===id)?records.map(r=>r.id===id?next:r):[next,...records];currentVehicle=next.vehicle;currentType=next.vehicleType;addVehicle(next.vehicle,next.vehicleType);save();closeForm()}
-function del(){const id=$('#id').value;if(!id||!confirm('確定刪除這筆紀錄？'))return;records=records.filter(r=>r.id!==id);save();closeForm()}
-function exportJson(){const blob=new Blob([JSON.stringify({app:'機車保養紀錄',exportedAt:new Date().toISOString(),records,vehicles},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='機車保養紀錄-'+today()+'.json';a.click();URL.revokeObjectURL(url)}
-function importJson(file){if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const d=JSON.parse(reader.result), r=Array.isArray(d)?d:d.records;if(!Array.isArray(r))throw Error();records=r.filter(x=>x&&x.id);vehicles=Array.isArray(d.vehicles)?d.vehicles.filter(x=>x&&x.id):[];ensureVehicles();save();closeSheet();renderVehicles();renderList();alert('匯入完成。')}catch{alert('這個備份檔無法匯入。')}};reader.readAsText(file)}
-async function fbBackup(){try{await backupRef().set({records,vehicles,updatedAt:new Date().toISOString(),count:records.length,source:'github-pages-rtdb'});closeSheet();alert('已備份到 Firebase Realtime Database。')}catch(e){alert('Firebase 備份失敗：'+(e.message||'請檢查規則與網路'))}}
-async function fbRestore(){if(!confirm('會用 Firebase 備份覆蓋目前本機紀錄。建議先下載 JSON 備份。'))return;try{const snap=await backupRef().get();if(!snap.exists()){alert('找不到這個備份代碼。');return}const d=snap.val();if(!Array.isArray(d.records)){alert('備份格式不正確。');return}records=d.records.filter(x=>x&&x.id);vehicles=Array.isArray(d.vehicles)?d.vehicles.filter(x=>x&&x.id):[];ensureVehicles();save();closeSheet();renderVehicles();renderList();alert('已從 Firebase 還原。')}catch(e){alert('Firebase 還原失敗：'+(e.message||'請檢查規則與網路'))}}
-function openSheet(){$('#cloudStatus').textContent='Realtime Database：public/motorcycleMaintenance/'+backupId();$('#sheet').classList.add('open')}function closeSheet(){$('#sheet').classList.remove('open')}function changeBackupId(){const next=prompt('輸入備份代碼。不同裝置輸入同樣代碼就能同步。',backupId());if(!next)return;localStorage.setItem(K_BACKUP,next.trim());openSheet()}
-function seed(){if(records.length||vehicles.length)return;records=[{id:'seed1',amount:1500,vehicle:'MMBCU',vehicleType:'motorcycle',category:'coolant',categoryName:'水箱精',mileage:1500,date:'2026-07-08',brand:'pakelo',note:'水箱精'},{id:'seed2',amount:100,vehicle:'MMBCU',vehicleType:'motorcycle',category:'gear-oil',categoryName:'齒輪油',mileage:13700,date:'2026-07-08',brand:'',note:''},{id:'seed3',amount:1900,vehicle:'MMBCU',vehicleType:'motorcycle',category:'tire',categoryName:'輪胎',mileage:13700,date:'2026-07-08',brand:'',note:''},{id:'seed4',amount:1200,vehicle:'MMBCU',vehicleType:'motorcycle',category:'battery',categoryName:'電瓶',mileage:10500,date:'2026-03-30',brand:'',note:''}];ensureVehicles();save()}
-$('#category').innerHTML=categories.map(c=>`<option value="${c.id}">${c.icon} ${c.name}</option>`).join('');$('#category').addEventListener('change',updateCustom);$('#amount').addEventListener('input',()=>$('#amount').value=clean($('#amount').value));$('#mileage').addEventListener('input',()=>$('#mileage').value=clean($('#mileage').value));$('#vehicleList').addEventListener('click',e=>{const add=e.target.closest('[data-add]');if(add){pendingType=add.dataset.add;$('#vehicleModalTitle').textContent='新增'+vLabel(pendingType)+'車型';$('#newVehicle').value='';$('#vehicleModal').classList.add('open');setTimeout(()=>$('#newVehicle').focus(),50);return}const open=e.target.closest('[data-open]');if(open)openVehicle(open.dataset.open,open.dataset.type)});$('#saveVehicle').onclick=()=>{const v=addVehicle($('#newVehicle').value,pendingType);if(!v){alert('請輸入車型名稱。');return}$('#vehicleModal').classList.remove('open');renderVehicles()};$('#cancelVehicle').onclick=()=>$('#vehicleModal').classList.remove('open');$('#backHome').onclick=()=>{show('home');renderVehicles()};$('#addRecord').onclick=()=>openForm();$('#backList').onclick=closeForm;$('#recordForm').addEventListener('submit',submit);$('#deleteRecord').onclick=del;$('#search').addEventListener('input',()=>{search=$('#search').value;renderList()});$('#recordList').addEventListener('click',e=>{const y=e.target.closest('[data-year]');if(y){collapsed.has(y.dataset.year)?collapsed.delete(y.dataset.year):collapsed.add(y.dataset.year);renderList();return}const b=e.target.closest('[data-id]');if(b)openForm(records.find(r=>r.id===b.dataset.id))});$('#homeMenu').onclick=openSheet;$('#listMenu').onclick=openSheet;$('#closeSheet').onclick=closeSheet;$('#sheet').addEventListener('click',e=>{if(e.target===$('#sheet'))closeSheet()});$('#exportBtn').onclick=exportJson;$('#importBtn').onclick=()=>$('#importFile').click();$('#importFile').addEventListener('change',e=>importJson(e.target.files[0]));$('#backupFirebase').onclick=fbBackup;$('#restoreFirebase').onclick=fbRestore;$('#changeBackupId').onclick=changeBackupId;$('#clearAll').onclick=()=>{if(!confirm('確定清空本機資料？建議先下載 JSON 備份。'))return;records=[];vehicles=[];save();closeSheet();show('home');renderVehicles()};seed();ensureVehicles();renderVehicles();
-</script>
+  <main class="app">
+    <section id="vehicleScreen" class="screen active" aria-label="車輛列表">
+      <header class="topbar">
+        <div class="nav-left"></div>
+        <strong class="nav-title">保養管理</strong>
+        <div class="nav-right"><button class="link-btn" type="button" id="menuBtn">⋯</button></div>
+      </header>
+
+      <h1 class="home-title">我的車輛</h1>
+      <div class="vehicle-list" id="vehicleList"></div>
+      <div class="empty hidden" id="vehicleEmpty">還沒有車輛。<br>按機車或汽車旁邊的 + 新增車型。</div>
+    </section>
+
+    <section id="listScreen" class="screen" aria-label="保養紀錄列表">
+      <header class="topbar">
+        <div class="nav-left">
+          <button class="link-btn back-link" type="button" id="vehicleBackBtn">
+            <span class="ios-chevron" aria-hidden="true"></span>
+            <span>返回</span>
+          </button>
+        </div>
+        <strong class="nav-title" id="vehicleTitle">MMBCU</strong>
+        <div class="nav-right"><button class="link-btn" type="button" id="listMenuBtn">⋯</button></div>
+      </header>
+
+      <div class="summary" aria-label="統計">
+        <div>今年花費<strong id="yearTotal">$0</strong></div>
+        <div>筆數<strong id="countTotal">0</strong></div>
+        <div>最新里程<strong id="latestMileage">0 公里</strong></div>
+      </div>
+
+      <div class="search-wrap">
+        <input class="search-input" id="searchInput" type="search" placeholder="搜尋保養項目、廠牌、備註">
+      </div>
+
+      <div class="record-list" id="recordList"></div>
+      <div class="empty hidden" id="emptyState">還沒有保養紀錄。<br>按右下角 + 新增第一筆。</div>
+      <button class="fab" type="button" id="addBtn" aria-label="新增">+</button>
+    </section>
+
+    <section id="formScreen" class="screen" aria-label="新增或編輯紀錄">
+      <header class="topbar">
+        <div class="nav-left">
+          <button class="link-btn back-link" type="button" id="backBtn">
+            <span class="ios-chevron" aria-hidden="true"></span>
+            <span>返回</span>
+          </button>
+        </div>
+        <strong class="nav-title" id="formTitle">新增紀錄</strong>
+        <div class="nav-right">
+          <button class="link-btn danger hidden" type="button" id="deleteBtn">刪除</button>
+        </div>
+      </header>
+
+      <form class="form" id="recordForm">
+        <input type="hidden" id="recordId">
+
+        <label class="field">
+          <span class="label">金額</span>
+          <input class="input" id="amount" inputmode="numeric" autocomplete="off" placeholder="例如 1500" required>
+        </label>
+
+        <label class="field">
+          <span class="label">車輛</span>
+          <input class="input" id="vehicle" autocomplete="off" placeholder="例如 MMBCU" required>
+        </label>
+
+        <div class="field">
+          <span class="label">保養項目</span>
+          <div class="category-row">
+            <span class="preview-icon" id="previewIcon"></span>
+            <div>
+              <div class="select-wrap" id="categorySelectWrap">
+                <select class="select hidden" id="categorySelect"></select>
+                <button class="category-picker-btn" type="button" id="categoryPickerBtn">
+                  <span id="categoryPickerText">機油</span>
+                  <span>⌄</span>
+                </button>
+              </div>
+              <input class="input hidden" id="categoryInput" autocomplete="off" placeholder="可直接輸入，例如 變速箱油">
+              <datalist id="categoryOptions"></datalist>
+            </div>
+          </div>
+        </div>
+
+        <label class="field">
+          <span class="label">里程數</span>
+          <input class="input" id="mileage" inputmode="numeric" autocomplete="off" placeholder="例如 13700" required>
+        </label>
+
+        <div class="field date-row">
+          <label>
+            <span class="label">日期</span>
+            <input class="input" id="date" type="date" required>
+          </label>
+          <label>
+            <span class="label">廠牌</span>
+            <input class="input" id="brand" autocomplete="off" placeholder="例如 pakelo">
+          </label>
+        </div>
+
+        <label class="field">
+          <span class="label">備註</span>
+          <textarea class="textarea" id="note" placeholder="可填更換內容、油品、店家..."></textarea>
+        </label>
+      </form>
+
+      <button class="save-fab" type="submit" form="recordForm" aria-label="儲存">儲存</button>
+    </section>
+  </main>
+
+  <div class="modal" id="vehicleModal" role="dialog" aria-modal="true" aria-label="新增車型">
+    <div class="modal-panel">
+      <div class="modal-title" id="vehicleModalTitle">新增車型</div>
+      <input class="input" id="newVehicleName" autocomplete="off" placeholder="例如 MMBCU">
+      <div class="modal-actions">
+        <button class="modal-btn" type="button" id="cancelVehicleBtn">取消</button>
+        <button class="modal-btn primary" type="button" id="saveVehicleBtn">新增</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="categoryModal" role="dialog" aria-modal="true" aria-label="選擇保養項目">
+    <div class="modal-panel">
+      <div class="modal-title">選擇保養項目</div>
+      <div class="option-list" id="categoryOptionList"></div>
+      <div class="modal-actions">
+        <button class="modal-btn" type="button" id="cancelCategoryBtn">取消</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="資料與備份">
+    <div class="sheet-panel">
+      <div class="sheet-title" id="cloudStatus">Realtime Database：M/4XK7A8</div>
+      <button class="sheet-btn" type="button" id="backupBtn">下載 JSON 備份</button>
+      <button class="sheet-btn" type="button" id="importBtn">匯入 JSON 備份</button>
+      <button class="sheet-btn" type="button" id="firebaseBackupBtn">備份到 Firebase RTDB</button>
+      <button class="sheet-btn" type="button" id="firebaseRestoreBtn">從 Firebase RTDB 還原</button>
+      <button class="sheet-btn" type="button" id="firebaseSetupBtn">更改備份代碼</button>
+      <button class="sheet-btn" type="button" id="showAllBtn">收合 / 展開年份</button>
+      <button class="sheet-btn danger" type="button" id="clearBtn">清空本機資料</button>
+      <button class="sheet-btn" type="button" id="closeSheetBtn">取消</button>
+    </div>
+  </div>
+
+  <input class="file-input" id="importFile" type="file" accept="application/json,.json">
+
+  <script>
+    const STORAGE_KEY = "motorcycle-maintenance-records-v1";
+    const VEHICLES_KEY = "motorcycle-maintenance-vehicles-v1";
+    const FIREBASE_KEY = "motorcycle-maintenance-firebase-v1";
+    const FIREBASE_SDK_VERSION = "10.12.5";
+    const DEFAULT_BACKUP_ID = "M/4XK7A8";
+    const FIREBASE_CONFIG = {
+      apiKey: "AIzaSyAvo2-aTHpDdnzNvD4aOp5o16KBQaR9OlU",
+      authDomain: "yikai-shared.firebaseapp.com",
+      databaseURL: "https://yikai-shared-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "yikai-shared",
+      storageBucket: "yikai-shared.firebasestorage.app",
+      messagingSenderId: "798549808274",
+      appId: "1:798549808274:web:ef37e35a097fd46405c24b"
+    };
+
+    const categories = [
+      { id: "engine-oil", name: "機油", icon: "oil", color: "#007aff", bg: "#e7f1ff" },
+      { id: "gear-oil", name: "齒輪油", icon: "bottle", color: "#c56b00", bg: "#fff1dc" },
+      { id: "coolant", name: "水箱精", icon: "coolant", color: "#008c8c", bg: "#ddf7f5" },
+      { id: "tire", name: "輪胎", icon: "tire", color: "#495057", bg: "#edf0f2" },
+      { id: "battery", name: "電瓶", icon: "battery", color: "#248a3d", bg: "#e8f7ef" },
+      { id: "brake", name: "煞車", icon: "brake", color: "#d70015", bg: "#ffe8e6" },
+      { id: "filter", name: "空濾", icon: "filter", color: "#7a5a00", bg: "#fff6d8" },
+      { id: "belt", name: "皮帶", icon: "belt", color: "#5856d6", bg: "#eeeeff" },
+      { id: "transmission-oil", name: "變速箱油", icon: "bottle", color: "#8f5a00", bg: "#fff1dc" },
+      { id: "wiper", name: "雨刷", icon: "wrench", color: "#56616f", bg: "#edf0f2" },
+      { id: "ac-filter", name: "冷氣濾網", icon: "filter", color: "#0f7f8f", bg: "#e4f7fa" },
+      { id: "other", name: "其他", icon: "wrench", color: "#6e6e73", bg: "#eeeeef" }
+    ];
+    const motorcycleCategoryIds = ["engine-oil", "gear-oil", "coolant", "tire", "battery", "brake", "filter", "belt", "other"];
+
+    const els = {
+      vehicleScreen: document.querySelector("#vehicleScreen"),
+      listScreen: document.querySelector("#listScreen"),
+      formScreen: document.querySelector("#formScreen"),
+      vehicleList: document.querySelector("#vehicleList"),
+      vehicleEmpty: document.querySelector("#vehicleEmpty"),
+      vehicleTitle: document.querySelector("#vehicleTitle"),
+      searchInput: document.querySelector("#searchInput"),
+      recordList: document.querySelector("#recordList"),
+      emptyState: document.querySelector("#emptyState"),
+      yearTotal: document.querySelector("#yearTotal"),
+      countTotal: document.querySelector("#countTotal"),
+      latestMileage: document.querySelector("#latestMileage"),
+      formTitle: document.querySelector("#formTitle"),
+      recordForm: document.querySelector("#recordForm"),
+      recordId: document.querySelector("#recordId"),
+      amount: document.querySelector("#amount"),
+      vehicle: document.querySelector("#vehicle"),
+      category: document.querySelector("#categoryInput"),
+      categorySelect: document.querySelector("#categorySelect"),
+      categorySelectWrap: document.querySelector("#categorySelectWrap"),
+      categoryPickerBtn: document.querySelector("#categoryPickerBtn"),
+      categoryPickerText: document.querySelector("#categoryPickerText"),
+      categoryModal: document.querySelector("#categoryModal"),
+      categoryOptionList: document.querySelector("#categoryOptionList"),
+      cancelCategoryBtn: document.querySelector("#cancelCategoryBtn"),
+      categoryOptions: document.querySelector("#categoryOptions"),
+      mileage: document.querySelector("#mileage"),
+      date: document.querySelector("#date"),
+      brand: document.querySelector("#brand"),
+      note: document.querySelector("#note"),
+      previewIcon: document.querySelector("#previewIcon"),
+      addBtn: document.querySelector("#addBtn"),
+      backBtn: document.querySelector("#backBtn"),
+      vehicleBackBtn: document.querySelector("#vehicleBackBtn"),
+      deleteBtn: document.querySelector("#deleteBtn"),
+      cloudBtn: document.querySelector("#cloudBtn"),
+      backupBtn: document.querySelector("#backupBtn"),
+      menuBtn: document.querySelector("#menuBtn"),
+      listMenuBtn: document.querySelector("#listMenuBtn"),
+      sheet: document.querySelector("#sheet"),
+      cloudStatus: document.querySelector("#cloudStatus"),
+      closeSheetBtn: document.querySelector("#closeSheetBtn"),
+      showAllBtn: document.querySelector("#showAllBtn"),
+      firebaseSetupBtn: document.querySelector("#firebaseSetupBtn"),
+      firebaseBackupBtn: document.querySelector("#firebaseBackupBtn"),
+      firebaseRestoreBtn: document.querySelector("#firebaseRestoreBtn"),
+      importBtn: document.querySelector("#importBtn"),
+      clearBtn: document.querySelector("#clearBtn"),
+      importFile: document.querySelector("#importFile"),
+      vehicleModal: document.querySelector("#vehicleModal"),
+      vehicleModalTitle: document.querySelector("#vehicleModalTitle"),
+      newVehicleName: document.querySelector("#newVehicleName"),
+      cancelVehicleBtn: document.querySelector("#cancelVehicleBtn"),
+      saveVehicleBtn: document.querySelector("#saveVehicleBtn")
+    };
+
+    let records = loadRecords();
+    let vehicles = loadVehicles();
+    let currentVehicle = "";
+    let currentVehicleType = "motorcycle";
+    let pendingVehicleType = "motorcycle";
+    let searchText = "";
+    let collapsedYears = new Set();
+    let firebaseApp = null;
+
+    function today() {
+      return new Date().toISOString().slice(0, 10);
+    }
+
+    function loadRecords() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+        return Array.isArray(saved) ? saved : [];
+      } catch {
+        return [];
+      }
+    }
+
+    function saveRecords() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+    }
+
+    function loadVehicles() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(VEHICLES_KEY) || "[]");
+        return Array.isArray(saved) ? saved : [];
+      } catch {
+        return [];
+      }
+    }
+
+    function saveVehicles() {
+      localStorage.setItem(VEHICLES_KEY, JSON.stringify(vehicles));
+    }
+
+    function loadFirebaseSettings() {
+      try {
+        return JSON.parse(localStorage.getItem(FIREBASE_KEY) || "null");
+      } catch {
+        return null;
+      }
+    }
+
+    function saveFirebaseSettings(settings) {
+      localStorage.setItem(FIREBASE_KEY, JSON.stringify(settings));
+    }
+
+    function money(value) {
+      return "$" + Number(value || 0).toLocaleString("zh-TW");
+    }
+
+    function numberText(value) {
+      return Number(value || 0).toLocaleString("zh-TW");
+    }
+
+    function getCategory(id) {
+      return categories.find(item => item.id === id) || categories[categories.length - 1];
+    }
+
+    function getCategoryByName(name) {
+      return categories.find(item => normalize(item.name) === normalize(name));
+    }
+
+    function categoryForRecord(record) {
+      const matched = getCategory(record.category);
+      const customName = record.categoryName || "";
+      if (record.category === "other" && customName) {
+        return { ...matched, name: customName };
+      }
+      return matched;
+    }
+
+    function vehicleTypeLabel(type) {
+      return type === "car" ? "汽車" : "機車";
+    }
+
+    function vehicleTypeIcon(type) {
+      return type === "car" ? iconSvg("car") : iconSvg("scooter");
+    }
+
+    function vehicleTypeColor(type) {
+      return type === "car"
+        ? { color: "#0f7f8f", bg: "#e4f7fa" }
+        : { color: "#007aff", bg: "#e7f1ff" };
+    }
+
+    function recordVehicleType(record) {
+      return record.vehicleType === "car" ? "car" : "motorcycle";
+    }
+
+    function makeVehicleId(name, type) {
+      return `${type}:${normalize(name)}`;
+    }
+
+    function ensureVehiclesFromRecords() {
+      let changed = false;
+      records.forEach(record => {
+        if (!record.vehicle) return;
+        const type = recordVehicleType(record);
+        const id = makeVehicleId(record.vehicle, type);
+        if (vehicles.some(vehicle => vehicle.id === id)) return;
+        vehicles.push({ id, name: record.vehicle, type, createdAt: record.date || today() });
+        changed = true;
+      });
+      if (changed) saveVehicles();
+    }
+
+    function addVehicle(name, type) {
+      const cleanName = String(name || "").trim();
+      if (!cleanName) return null;
+      const id = makeVehicleId(cleanName, type);
+      const existing = vehicles.find(vehicle => vehicle.id === id);
+      if (existing) return existing;
+      const next = { id, name: cleanName, type, createdAt: today() };
+      vehicles = [...vehicles, next];
+      saveVehicles();
+      return next;
+    }
+
+    function iconSvg(name) {
+      const attrs = 'class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"';
+      const icons = {
+        oil: `<svg ${attrs}><path d="M4 15.5 13.5 6l4.5 4.5-9.5 9.5H4v-4.5Z"/><path d="m12 7-2-2h4l1.5 1.5"/><path d="M18.5 14.5c1.4 1.5 2.1 2.8 2.1 3.8a2.1 2.1 0 0 1-4.2 0c0-1 .7-2.3 2.1-3.8Z"/></svg>`,
+        bottle: `<svg ${attrs}><path d="M10 3h4"/><path d="M11 3v3l-2.8 2.8A4 4 0 0 0 7 11.6V19a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-7.4a4 4 0 0 0-1.2-2.8L13 6V3"/><path d="M9 14h6"/><path d="M10 17h4"/></svg>`,
+        coolant: `<svg ${attrs}><path d="M12 3v10"/><path d="M9 5h6"/><path d="M9 8h6"/><path d="M9 11h6"/><path d="M9.5 14.5a4 4 0 1 0 5 0"/><path d="M12 17v.1"/></svg>`,
+        tire: `<svg ${attrs}><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.2"/><path d="M12 3.5v5.3"/><path d="M12 15.2v5.3"/><path d="m4.6 7.8 4.6 2.6"/><path d="m14.8 13.6 4.6 2.6"/><path d="m19.4 7.8-4.6 2.6"/><path d="m9.2 13.6-4.6 2.6"/></svg>`,
+        battery: `<svg ${attrs}><rect x="3" y="7" width="16" height="11" rx="2"/><path d="M19 10h2v5h-2"/><path d="M8 11v3"/><path d="M6.5 12.5h3"/><path d="M13.5 12.5h3"/></svg>`,
+        brake: `<svg ${attrs}><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.5"/><path d="M4 5.5 2.5 4"/><path d="M20 5.5 21.5 4"/><path d="M4 18.5 2.5 20"/><path d="M20 18.5 21.5 20"/></svg>`,
+        filter: `<svg ${attrs}><path d="M5 5h14"/><path d="M7 9h10"/><path d="M9 13h6"/><path d="M10.5 17h3"/><path d="M5 5l5.5 6v6l3 2v-8L19 5"/></svg>`,
+        belt: `<svg ${attrs}><circle cx="8" cy="12" r="3.2"/><circle cx="16" cy="12" r="3.2"/><path d="M8 8.8h8"/><path d="M8 15.2h8"/></svg>`,
+        wrench: `<svg ${attrs}><path d="M14.5 5.5a4.2 4.2 0 0 0 4 5.8l-8.2 8.2a2 2 0 0 1-2.8-2.8l8.2-8.2a4.2 4.2 0 0 0-5.8-4"/></svg>`,
+        scooter: `<svg ${attrs}><path d="M5 16.5h9.5a3.5 3.5 0 0 0 3.5-3.5v-1h-4.5l-2-4H8"/><circle cx="6" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M14 8h3l2-2"/><path d="M9 8v4"/></svg>`,
+        car: `<svg ${attrs}><path d="M5 16h14"/><path d="M6.5 16v2"/><path d="M17.5 16v2"/><path d="M4 12l2-5h12l2 5"/><path d="M5 12h14v4H5z"/><path d="M7 14h1"/><path d="M16 14h1"/></svg>`,
+        mercedes: `<svg ${attrs}><circle cx="12" cy="12" r="8.5"/><path d="M12 4.2v8.1"/><path d="m12 12.3 6.7 3.9"/><path d="m12 12.3-6.7 3.9"/></svg>`
+      };
+      return icons[name] || icons.wrench;
+    }
+
+    function makeId() {
+      return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+    }
+
+    function sanitizeNumber(value) {
+      return String(value || "").replace(/[^\d]/g, "");
+    }
+
+    function renderCategoryOptions() {
+      els.categorySelect.innerHTML = categories
+        .filter(item => motorcycleCategoryIds.includes(item.id))
+        .map(item => `<option value="${item.id}">${item.name}</option>`)
+        .join("");
+      renderCategoryPickerOptions();
+      els.categoryOptions.innerHTML = categories.map(item =>
+        `<option value="${item.name}"></option>`
+      ).join("");
+      updateCategoryPreview();
+    }
+
+    function renderCategoryPickerOptions() {
+      const selectedId = els.categorySelect.value || "engine-oil";
+      els.categoryOptionList.innerHTML = categories
+        .filter(item => motorcycleCategoryIds.includes(item.id))
+        .map(item => `
+          <button class="option-btn" type="button" data-category-id="${item.id}">
+            <span class="option-icon" style="color:${item.color}; background:${item.bg}">${iconSvg(item.icon)}</span>
+            <span>${item.name}</span>
+            <span class="option-check">${item.id === selectedId ? "✓" : ""}</span>
+          </button>
+        `)
+        .join("");
+    }
+
+    function activeCategoryName() {
+      if (currentVehicleType === "car") return els.category.value.trim();
+      return getCategory(els.categorySelect.value).name;
+    }
+
+    function activeCategoryPayload() {
+      const name = activeCategoryName();
+      const matchedCategory = currentVehicleType === "car"
+        ? getCategoryByName(name)
+        : getCategory(els.categorySelect.value);
+      return {
+        category: matchedCategory?.id || "other",
+        categoryName: name
+      };
+    }
+
+    function updateCategoryPreview() {
+      const typedName = activeCategoryName();
+      const category = currentVehicleType === "car"
+        ? { name: typedName || "保養項目", icon: "mercedes", color: "#1f2937", bg: "#eef0f4" }
+        : getCategoryByName(typedName) || { ...getCategory("other"), name: typedName || "其他" };
+      els.previewIcon.style.color = category.color;
+      els.previewIcon.style.background = category.bg;
+      els.previewIcon.innerHTML = iconSvg(category.icon);
+      els.categoryPickerText.textContent = category.name;
+    }
+
+    function normalize(text) {
+      return String(text || "").trim().toLowerCase();
+    }
+
+    function getVehicleNames(type) {
+      const names = [...new Set(vehicles
+        .filter(vehicle => vehicle.type === type)
+        .map(vehicle => vehicle.name)
+        .filter(Boolean))];
+      return names.sort((a, b) => a.localeCompare(b, "zh-Hant"));
+    }
+
+    function getVehicleRecords(vehicle, type = currentVehicleType) {
+      return records.filter(record => record.vehicle === vehicle && recordVehicleType(record) === type);
+    }
+
+    function recordMatchesSearch(record) {
+      const keyword = normalize(searchText);
+      if (!keyword) return true;
+      const category = categoryForRecord(record);
+      return [
+        category.name,
+        record.vehicle,
+        vehicleTypeLabel(recordVehicleType(record)),
+        record.brand,
+        record.note,
+        record.amount,
+        record.mileage,
+        record.date
+      ].some(value => normalize(value).includes(keyword));
+    }
+
+    function renderVehicles() {
+      const sections = [
+        { type: "motorcycle", title: "機車" },
+        { type: "car", title: "汽車" }
+      ];
+      const totalVehicles = sections.reduce((sum, section) => sum + getVehicleNames(section.type).length, 0);
+      els.vehicleEmpty.classList.toggle("hidden", totalVehicles > 0);
+      els.vehicleList.innerHTML = sections.map(section => {
+        const vehicles = getVehicleNames(section.type);
+        return `
+          <section class="vehicle-section">
+            <div class="section-title">
+              <span>${section.title}</span>
+              <button class="section-add" type="button" data-add-type="${section.type}" aria-label="新增${section.title}車型">+</button>
+            </div>
+            ${vehicles.length ? vehicles.map(vehicle => renderVehicleCard(vehicle, section.type)).join("") : `<div class="empty-small">尚無${section.title}車型</div>`}
+          </section>
+        `;
+      }).join("");
+    }
+
+    function renderVehicleCard(vehicle, type) {
+      const vehicleRecords = getVehicleRecords(vehicle, type);
+      const latestMileage = vehicleRecords.reduce((max, record) => Math.max(max, Number(record.mileage || 0)), 0);
+      const total = vehicleRecords.reduce((sum, record) => sum + Number(record.amount || 0), 0);
+      const accent = vehicleTypeColor(type);
+      return `
+        <button class="vehicle-card" type="button" data-vehicle="${escapeHtml(vehicle)}" data-type="${type}">
+          <span class="vehicle-icon" style="color:${accent.color}; background:${accent.bg}">${vehicleTypeIcon(type)}</span>
+          <span>
+            <span class="vehicle-name">${escapeHtml(vehicle)}</span>
+            <span class="vehicle-sub">${vehicleRecords.length} 筆 · ${numberText(latestMileage)} 公里 · ${money(total)}</span>
+          </span>
+          <span class="vehicle-arrow">›</span>
+        </button>
+      `;
+    }
+
+    function openVehicle(vehicle, type = "motorcycle") {
+      currentVehicle = vehicle;
+      currentVehicleType = type;
+      searchText = "";
+      collapsedYears = new Set();
+      els.searchInput.value = "";
+      els.vehicleTitle.textContent = vehicle;
+      showScreen("list");
+      renderList();
+    }
+
+    function renderList() {
+      const currentYear = new Date().getFullYear();
+      const vehicleRecords = getVehicleRecords(currentVehicle);
+      const sorted = [...vehicleRecords].sort((a, b) =>
+        String(b.date).localeCompare(String(a.date)) || Number(b.mileage) - Number(a.mileage)
+      );
+      const visible = sorted.filter(recordMatchesSearch);
+      const currentYearRecords = vehicleRecords.filter(record =>
+        new Date(record.date || today()).getFullYear() === currentYear
+      );
+      const total = currentYearRecords.reduce((sum, record) => sum + Number(record.amount || 0), 0);
+      const latestMileage = sorted.reduce((max, record) => Math.max(max, Number(record.mileage || 0)), 0);
+      const years = [...new Set(visible.map(record => new Date(record.date || today()).getFullYear()))]
+        .sort((a, b) => b - a);
+
+      els.yearTotal.textContent = money(total);
+      els.countTotal.textContent = `${vehicleRecords.length}`;
+      els.latestMileage.textContent = `${numberText(latestMileage)} 公里`;
+      els.emptyState.classList.toggle("hidden", visible.length > 0);
+
+      els.recordList.innerHTML = years.map(year => {
+        const yearRecords = visible.filter(record => new Date(record.date || today()).getFullYear() === year);
+        const isCollapsed = collapsedYears.has(String(year));
+        return `
+          <section class="year-group">
+            <button class="year-title" type="button" data-year="${year}">
+              ${year} 年
+              <span>${yearRecords.length} 筆 <b class="year-caret">${isCollapsed ? "＋" : "－"}</b></span>
+            </button>
+            ${isCollapsed ? "" : yearRecords.map(record => renderRecord(record)).join("")}
+          </section>
+        `;
+      }).join("");
+    }
+
+    function renderRecord(record) {
+      const category = categoryForRecord(record);
+      const date = record.date ? record.date.slice(5).replace("-", "-") : "";
+      const note = [record.brand, record.note].filter(Boolean).join(" · ");
+      return `
+        <button class="record" type="button" data-id="${record.id}">
+          <span class="record-icon" style="color: ${category.color}; background: ${category.bg}">${iconSvg(category.icon)}</span>
+          <span>
+            <span class="record-name">${category.name}</span>
+            ${note ? `<span class="record-note">${escapeHtml(note)}</span>` : ""}
+          </span>
+          <span class="record-meta">
+            <span>${date}</span>
+            <span class="money">${money(record.amount)}</span>
+            <span>${numberText(record.mileage)} 公里</span>
+          </span>
+        </button>
+      `;
+    }
+
+    function escapeHtml(text) {
+      return String(text).replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      })[char]);
+    }
+
+    function showScreen(name) {
+      els.vehicleScreen.classList.toggle("active", name === "vehicle");
+      els.listScreen.classList.toggle("active", name === "list");
+      els.formScreen.classList.toggle("active", name === "form");
+      window.scrollTo({ top: 0, behavior: "auto" });
+    }
+
+    function openForm(record) {
+      const isEdit = Boolean(record?.id);
+      const formVehicleType = record ? recordVehicleType(record) : currentVehicleType;
+      currentVehicleType = formVehicleType;
+      els.formTitle.textContent = isEdit ? "編輯紀錄" : "新增紀錄";
+      els.deleteBtn.classList.toggle("hidden", !isEdit);
+      els.recordId.value = record?.id || "";
+      els.amount.value = record?.amount || "";
+      els.vehicle.value = record?.vehicle || currentVehicle || "MMBCU";
+      els.categorySelectWrap.classList.toggle("hidden", formVehicleType === "car");
+      els.category.classList.toggle("hidden", formVehicleType !== "car");
+      if (formVehicleType === "car") {
+        els.category.value = record?.categoryName || getCategory(record?.category || "engine-oil").name;
+        els.category.required = true;
+        els.categorySelect.required = false;
+      } else {
+        els.category.value = "";
+        els.category.required = false;
+        els.categorySelect.required = true;
+        els.categorySelect.value = record?.category || "engine-oil";
+      }
+      els.mileage.value = record?.mileage || "";
+      els.date.value = record?.date || today();
+      els.brand.value = record?.brand || "";
+      els.note.value = record?.note || "";
+      updateCategoryPreview();
+      showScreen("form");
+    }
+
+    function closeForm() {
+      showScreen("list");
+      renderVehicles();
+      renderList();
+    }
+
+    function submitRecord(event) {
+      event.preventDefault();
+      const id = els.recordId.value || makeId();
+      const categoryPayload = activeCategoryPayload();
+      const next = {
+        id,
+        amount: Number(sanitizeNumber(els.amount.value)),
+        vehicle: els.vehicle.value.trim(),
+        vehicleType: recordVehicleType(records.find(record => record.id === id) || { vehicleType: currentVehicleType }),
+        category: categoryPayload.category,
+        categoryName: categoryPayload.categoryName,
+        mileage: Number(sanitizeNumber(els.mileage.value)),
+        date: els.date.value || today(),
+        brand: els.brand.value.trim(),
+        note: els.note.value.trim()
+      };
+
+      if (!next.amount || !next.vehicle || !next.categoryName || !next.mileage) {
+        alert("請填金額、車輛、保養項目與里程數。");
+        return;
+      }
+
+      records = records.some(record => record.id === id)
+        ? records.map(record => record.id === id ? next : record)
+        : [next, ...records];
+      currentVehicle = next.vehicle;
+      currentVehicleType = next.vehicleType;
+      addVehicle(next.vehicle, next.vehicleType);
+      els.vehicleTitle.textContent = currentVehicle;
+      saveRecords();
+      closeForm();
+    }
+
+    function deleteCurrentRecord() {
+      const id = els.recordId.value;
+      if (!id) return;
+      if (!confirm("確定要刪除這筆紀錄？")) return;
+      records = records.filter(record => record.id !== id);
+      saveRecords();
+      closeForm();
+    }
+
+    function exportBackup() {
+      const payload = {
+        app: "機車保養紀錄",
+        exportedAt: new Date().toISOString(),
+        records,
+        vehicles
+      };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `機車保養紀錄-${today()}.json`;
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importBackup(file) {
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const data = JSON.parse(reader.result);
+          const imported = Array.isArray(data) ? data : data.records;
+          if (!Array.isArray(imported)) throw new Error("bad file");
+          records = imported.filter(item => item && item.id);
+          vehicles = Array.isArray(data.vehicles) ? data.vehicles.filter(item => item && item.id) : [];
+          saveRecords();
+          saveVehicles();
+          ensureVehiclesFromRecords();
+          renderVehicles();
+          renderList();
+          closeSheet();
+          alert("匯入完成。");
+        } catch {
+          alert("這個備份檔無法匯入。");
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function currentBackupId() {
+      const settings = loadFirebaseSettings();
+      return settings?.backupId || DEFAULT_BACKUP_ID;
+    }
+
+    function firebasePath() {
+      return `public/motorcycleMaintenance/${currentBackupId()}`;
+    }
+
+    function setupFirebase() {
+      const backupId = prompt(
+        "設定 Firebase RTDB 備份代碼。不同裝置輸入同樣代碼就能同步。",
+        currentBackupId()
+      );
+      if (!backupId) return null;
+      const settings = { backupId: backupId.trim() };
+      saveFirebaseSettings(settings);
+      alert("Firebase 備份代碼已儲存。");
+      return settings;
+    }
+
+    function loadScript(src) {
+      return new Promise((resolve, reject) => {
+        if (document.querySelector(`script[src="${src}"]`)) {
+          resolve();
+          return;
+        }
+        const script = document.createElement("script");
+        script.src = src;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+      });
+    }
+
+    async function ensureFirebase() {
+      const base = `https://www.gstatic.com/firebasejs/${FIREBASE_SDK_VERSION}`;
+      await loadScript(`${base}/firebase-app-compat.js`);
+      await loadScript(`${base}/firebase-database-compat.js`);
+
+      if (!firebaseApp) {
+        firebaseApp = firebase.apps.length
+          ? firebase.apps[0]
+          : firebase.initializeApp(FIREBASE_CONFIG);
+      }
+
+      return firebase.database().ref(firebasePath());
+    }
+
+    async function backupToFirebase() {
+      try {
+        const ref = await ensureFirebase();
+        await ref.set({
+          records,
+          vehicles,
+          updatedAt: new Date().toISOString(),
+          count: records.length,
+          source: "github-pages-rtdb"
+        });
+        closeSheet();
+        alert("已備份到 Firebase Realtime Database。");
+      } catch (error) {
+        alert(`Firebase 備份失敗：${error.message || "請檢查網路與規則"}`);
+      }
+    }
+
+    async function restoreFromFirebase() {
+      if (!confirm("會用 Firebase 備份覆蓋目前本機紀錄。建議先按「備份」下載一份本機檔。")) return;
+      try {
+        const ref = await ensureFirebase();
+        const snap = await ref.get();
+        if (!snap.exists()) {
+          alert("Firebase 找不到這個備份代碼。");
+          return;
+        }
+        const data = snap.val();
+        if (!Array.isArray(data.records)) {
+          alert("Firebase 備份格式不正確。");
+          return;
+        }
+        records = data.records.filter(item => item && item.id);
+        vehicles = Array.isArray(data.vehicles) ? data.vehicles.filter(item => item && item.id) : [];
+        saveRecords();
+        saveVehicles();
+        ensureVehiclesFromRecords();
+        renderVehicles();
+        renderList();
+        closeSheet();
+        alert("已從 Firebase Realtime Database 還原。");
+      } catch (error) {
+        alert(`Firebase 還原失敗：${error.message || "請檢查網路與規則"}`);
+      }
+    }
+
+    function openSheet() {
+      els.cloudStatus.textContent = `Realtime Database：${firebasePath()}`;
+      els.sheet?.classList.add("open");
+    }
+
+    function closeSheet() {
+      els.sheet?.classList.remove("open");
+    }
+
+    function toggleAllYears() {
+      const years = [...new Set(getVehicleRecords(currentVehicle).map(record =>
+        String(new Date(record.date || today()).getFullYear())
+      ))];
+      const shouldCollapse = years.some(year => !collapsedYears.has(year));
+      collapsedYears = shouldCollapse ? new Set(years) : new Set();
+      closeSheet();
+      renderList();
+    }
+
+    function promptAddVehicle(type) {
+      pendingVehicleType = type;
+      els.vehicleModalTitle.textContent = `新增${vehicleTypeLabel(type)}車型`;
+      els.newVehicleName.value = "";
+      els.newVehicleName.placeholder = type === "car" ? "例如 RAV4" : "例如 MMBCU";
+      els.vehicleModal.classList.add("open");
+      setTimeout(() => els.newVehicleName.focus(), 50);
+    }
+
+    function closeVehicleModal() {
+      els.vehicleModal.classList.remove("open");
+    }
+
+    function openCategoryModal() {
+      renderCategoryPickerOptions();
+      els.categoryModal.classList.add("open");
+    }
+
+    function closeCategoryModal() {
+      els.categoryModal.classList.remove("open");
+    }
+
+    function selectMotorcycleCategory(categoryId) {
+      els.categorySelect.value = categoryId;
+      updateCategoryPreview();
+      closeCategoryModal();
+    }
+
+    function saveVehicleFromModal() {
+      const vehicle = addVehicle(els.newVehicleName.value, pendingVehicleType);
+      if (!vehicle) {
+        alert("請輸入車型名稱。");
+        return;
+      }
+      closeVehicleModal();
+      renderVehicles();
+    }
+
+    function seedIfEmpty() {
+      if (records.length) return;
+      records = [
+        { id: makeId(), amount: 1500, vehicle: "MMBCU", vehicleType: "motorcycle", category: "coolant", mileage: 1500, date: "2026-07-08", brand: "pakelo", note: "水箱精" },
+        { id: makeId(), amount: 100, vehicle: "MMBCU", vehicleType: "motorcycle", category: "gear-oil", mileage: 13700, date: "2026-07-08", brand: "", note: "" },
+        { id: makeId(), amount: 1900, vehicle: "MMBCU", vehicleType: "motorcycle", category: "tire", mileage: 13700, date: "2026-07-08", brand: "", note: "" },
+        { id: makeId(), amount: 1200, vehicle: "MMBCU", vehicleType: "motorcycle", category: "battery", mileage: 10500, date: "2026-03-30", brand: "", note: "" }
+      ];
+      saveRecords();
+      ensureVehiclesFromRecords();
+    }
+
+    els.addBtn.addEventListener("click", () => openForm());
+    els.backBtn.addEventListener("click", closeForm);
+    els.vehicleBackBtn.addEventListener("click", () => {
+      showScreen("vehicle");
+      renderVehicles();
+    });
+    els.recordForm.addEventListener("submit", submitRecord);
+    els.deleteBtn.addEventListener("click", deleteCurrentRecord);
+    els.category.addEventListener("input", updateCategoryPreview);
+    els.category.addEventListener("change", updateCategoryPreview);
+    els.categorySelect.addEventListener("change", updateCategoryPreview);
+    els.categoryPickerBtn.addEventListener("click", openCategoryModal);
+    els.cancelCategoryBtn.addEventListener("click", closeCategoryModal);
+    els.categoryModal.addEventListener("click", event => {
+      if (event.target === els.categoryModal) closeCategoryModal();
+    });
+    els.categoryOptionList.addEventListener("click", event => {
+      const button = event.target.closest(".option-btn");
+      if (!button) return;
+      selectMotorcycleCategory(button.dataset.categoryId);
+    });
+    els.amount.addEventListener("input", () => els.amount.value = sanitizeNumber(els.amount.value));
+    els.mileage.addEventListener("input", () => els.mileage.value = sanitizeNumber(els.mileage.value));
+    els.searchInput.addEventListener("input", () => {
+      searchText = els.searchInput.value;
+      renderList();
+    });
+    els.vehicleList.addEventListener("click", event => {
+      const addButton = event.target.closest(".section-add");
+      if (addButton) {
+        event.preventDefault();
+        event.stopPropagation();
+        promptAddVehicle(addButton.dataset.addType);
+        return;
+      }
+      const button = event.target.closest(".vehicle-card");
+      if (!button) return;
+      openVehicle(button.dataset.vehicle, button.dataset.type);
+    });
+    els.cancelVehicleBtn.addEventListener("click", closeVehicleModal);
+    els.saveVehicleBtn.addEventListener("click", saveVehicleFromModal);
+    els.vehicleModal.addEventListener("click", event => {
+      if (event.target === els.vehicleModal) closeVehicleModal();
+    });
+    els.newVehicleName.addEventListener("keydown", event => {
+      if (event.key === "Enter") saveVehicleFromModal();
+      if (event.key === "Escape") closeVehicleModal();
+    });
+    els.recordList.addEventListener("click", event => {
+      const yearButton = event.target.closest(".year-title");
+      if (yearButton) {
+        const year = yearButton.dataset.year;
+        collapsedYears.has(year) ? collapsedYears.delete(year) : collapsedYears.add(year);
+        renderList();
+        return;
+      }
+      const button = event.target.closest(".record");
+      if (!button) return;
+      openForm(records.find(record => record.id === button.dataset.id));
+    });
+    els.cloudBtn?.addEventListener("click", openSheet);
+    els.backupBtn?.addEventListener("click", exportBackup);
+    els.menuBtn?.addEventListener("click", openSheet);
+    els.listMenuBtn?.addEventListener("click", openSheet);
+    els.closeSheetBtn?.addEventListener("click", closeSheet);
+    els.sheet?.addEventListener("click", event => {
+      if (event.target === els.sheet) closeSheet();
+    });
+    els.showAllBtn?.addEventListener("click", toggleAllYears);
+    els.firebaseSetupBtn?.addEventListener("click", () => {
+      setupFirebase();
+      openSheet();
+    });
+    els.firebaseBackupBtn?.addEventListener("click", backupToFirebase);
+    els.firebaseRestoreBtn?.addEventListener("click", restoreFromFirebase);
+    els.importBtn?.addEventListener("click", () => els.importFile.click());
+    els.importFile?.addEventListener("change", event => importBackup(event.target.files[0]));
+    els.clearBtn?.addEventListener("click", () => {
+      if (!confirm("確定清空全部紀錄？建議先按「備份」。")) return;
+      records = [];
+      saveRecords();
+      closeSheet();
+      currentVehicle = "";
+      showScreen("vehicle");
+      renderVehicles();
+      renderList();
+    });
+
+    renderCategoryOptions();
+    seedIfEmpty();
+    ensureVehiclesFromRecords();
+    renderVehicles();
+  </script>
 </body>
 </html>
